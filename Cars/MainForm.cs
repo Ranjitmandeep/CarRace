@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using ShadowEngine;
 using Tao.OpenGl;
 using ShadowEngine.OpenGL;
-using ShadowEngine.ContentLoading; 
+using ShadowEngine.ContentLoading;
 
 namespace CarRace
 {
@@ -16,16 +16,16 @@ namespace CarRace
     {
         uint hdc;
         int selectedCamara = 1;  //set camera angle
-        int count,bustCount=0;
+        int count, bustCount = 0;
         Controller control = new Controller();
         int mostrado = 0;
         int moving;
         //initialize total amount of punters
-        int joe_total = 45, bob_total = 50, ai_total = 75;
+        int joe_total = 50, bob_total = 50, ai_total = 50;
         //by default no one wins 
         bool joe_won = false, bob_won = false, ai_won = false; //initially no one wins 
-        int []carno = new int[3]; //betno, the number of punter
-        int []betValue = new int[3]; //betvalue, the amount placed as bet by punter
+        int[] carno = new int[3]; //betno, the number of punter
+        int[] betValue = new int[3]; //betvalue, the amount placed as bet by punter
         public MainForm()
         {
             InitializeComponent();
@@ -37,20 +37,20 @@ namespace CarRace
             if (error != "")
             {
                 MessageBox.Show("Error Occurred"); //show error if something goes wrong
-                this.Close();   
+                this.Close();
             }
 
-            
+
             //float[] lightAmbient = { 0.15F, 0.15F, 0.15F, 0.0F };
 
             //Lighting.LightAmbient = lightAmbient; 
-            
-            Lighting.SetupLighting();  
-            
+
+            Lighting.SetupLighting();
+
             ContentManager.SetTextureList("texturas\\");
             ContentManager.LoadTextures();
             ContentManager.SetModelList("modelos\\");
-            ContentManager.LoadModels();  
+            ContentManager.LoadModels();
             control.CreateObjects();
 
             //Gl.glPolygonMode(Gl.GL_FRONT_AND_BACK, Gl.GL_LINE);   
@@ -81,9 +81,9 @@ namespace CarRace
             }
             else
                 if (moving == -1)
-                {
-                    Gl.glTranslatef(0, 0, -0.35f);
-                }
+            {
+                Gl.glTranslatef(0, 0, -0.35f);
+            }
             count++;
             if (Controller.FinishedRace == true && mostrado == 0)
             {
@@ -94,24 +94,24 @@ namespace CarRace
                 MessageBox.Show("The winner was the: " + lblPrimero.Text + " (car no: " + lblbettingno.Text + ")"); //display the actual result of race
                 if (lblPrimero.Text == "Blue car")  //call overriden abstract metod to get and set winning better name
                 {
-                    result = obj.getWinning(carno,1); //1 for blue car
+                    result = obj.getWinning(carno, 1); //1 for blue car
                 }
                 else if (lblPrimero.Text == "Red car")
                 {
-                    result = obj.getWinning(carno,2); //2 for red car
+                    result = obj.getWinning(carno, 2); //2 for red car
                 }
                 else if (lblPrimero.Text == "Green car")
                 {
-                    result = obj.getWinning(carno,3); //3 for green car
+                    result = obj.getWinning(carno, 3); //3 for green car
                 }
                 else
                 {
-                    result = obj.getWinning(carno,4); //else 4 for violet car
+                    result = obj.getWinning(carno, 4); //else 4 for violet car
                 }
                 //based on carnumber which won set opposite punter winning status to true
                 if (result == 0)
                 {
-                    joe_won = true; 
+                    joe_won = true;
                 }
                 else if (result == 1)
                 {
@@ -178,7 +178,7 @@ namespace CarRace
 
         private void tmrPaint_Tick(object sender, EventArgs e)
         {
-            UpdateLogic(); 
+            UpdateLogic();
             // clean opengl to draw
             Gl.glClear(Gl.GL_COLOR_BUFFER_BIT | Gl.GL_DEPTH_BUFFER_BIT);
             //draws the entire scene
@@ -186,7 +186,7 @@ namespace CarRace
             //change buffers
             Winapi.SwapBuffers(hdc);
             //tell opengl to drop any operation he is doing and to prepare for a new frame
-            Gl.glFlush(); 
+            Gl.glFlush();
         }
         //initialize default constraints and values
         private void MainForm_Load(object sender, EventArgs e)
@@ -206,7 +206,7 @@ namespace CarRace
                 selectedCamara = 4;
             }
             //lblCamara.Text = Convert.ToString(selectedCamara);
-            control.Camara.SelectCamara(selectedCamara - 1);    
+            control.Camara.SelectCamara(selectedCamara - 1);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -217,12 +217,12 @@ namespace CarRace
                 selectedCamara = 1;
             }
             //lblCamara.Text = Convert.ToString(selectedCamara);
-            control.Camara.SelectCamara(selectedCamara-1);   
+            control.Camara.SelectCamara(selectedCamara - 1);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Controller.StartedRace = true;   
+            Controller.StartedRace = true;
         }
 
         //reset race
@@ -231,7 +231,7 @@ namespace CarRace
             lblPrimero.Text = "None";
             lblDistancia.Text = "0";
             control.ResetRace();
-            
+
             mostrado = 0;
             count = 0;
         }
@@ -247,9 +247,9 @@ namespace CarRace
             //1  = proporcion de alto por ancho
             //0.1f = distancia minima en la que se pinta
             //1000 = distancia maxima
-            Glu.gluPerspective(55, this.Width/(float)this.Height  , 0.1f, 1000);
+            Glu.gluPerspective(55, this.Width / (float)this.Height, 0.1f, 1000);
             Gl.glMatrixMode(Gl.GL_MODELVIEW);
-            control.Camara.SelectCamara(selectedCamara - 1); 
+            control.Camara.SelectCamara(selectedCamara - 1);
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
@@ -279,7 +279,7 @@ namespace CarRace
         //joe selected from better
         private void RadioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            maxlbl.Text = Convert.ToString(joe_total);            
+            maxlbl.Text = Convert.ToString(joe_total);
             numericBet.Maximum = joe_total;
             lblWhoBets.Text = "Joe ";
         }
@@ -313,7 +313,7 @@ namespace CarRace
 
         private void numericBet_ValueChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Panel4_Paint(object sender, PaintEventArgs e)
@@ -330,12 +330,14 @@ namespace CarRace
                 carno[0] = Convert.ToInt32(numericCar.Value);
                 betValue[0] = Convert.ToInt32(numericBet.Value);
             }
-            else if (lblWhoBets.Text == "Bob ") { 
+            else if (lblWhoBets.Text == "Bob ")
+            {
                 txtBob.Text = lblWhoBets.Text + " bets " + numericBet.Value + " on car " + numericCar.Value;
                 carno[1] = Convert.ToInt32(numericCar.Value);
                 betValue[1] = Convert.ToInt32(numericBet.Value);
             }
-            else { 
+            else
+            {
                 txtAI.Text = lblWhoBets.Text + " bets " + numericBet.Value + " on car " + numericCar.Value;
                 carno[2] = Convert.ToInt32(numericCar.Value);
                 betValue[2] = Convert.ToInt32(numericBet.Value);

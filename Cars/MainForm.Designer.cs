@@ -33,12 +33,13 @@
             this.btnReiniciar = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblbettingno = new System.Windows.Forms.Label();
             this.lblDistancia = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lblPrimero = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.maxlbl = new System.Windows.Forms.Label();
             this.lblWhoBets = new System.Windows.Forms.Label();
@@ -56,7 +57,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lblMaxBet = new System.Windows.Forms.Label();
-            this.lblbettingno = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -111,15 +111,15 @@
             this.panel3.Size = new System.Drawing.Size(342, 94);
             this.panel3.TabIndex = 10;
             // 
-            // label1
+            // lblbettingno
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Yellow;
-            this.label1.Location = new System.Drawing.Point(354, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "The Race";
+            this.lblbettingno.AutoSize = true;
+            this.lblbettingno.BackColor = System.Drawing.Color.Lime;
+            this.lblbettingno.Location = new System.Drawing.Point(123, 24);
+            this.lblbettingno.Name = "lblbettingno";
+            this.lblbettingno.Size = new System.Drawing.Size(34, 13);
+            this.lblbettingno.TabIndex = 14;
+            this.lblbettingno.Text = "none ";
             // 
             // lblDistancia
             // 
@@ -173,6 +173,16 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 15);
             this.label3.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Yellow;
+            this.label1.Location = new System.Drawing.Point(354, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "The Race";
             // 
             // panel4
             // 
@@ -311,6 +321,11 @@
             // numericBet
             // 
             this.numericBet.Location = new System.Drawing.Point(236, 17);
+            this.numericBet.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.numericBet.Name = "numericBet";
             this.numericBet.Size = new System.Drawing.Size(59, 20);
             this.numericBet.TabIndex = 13;
@@ -346,16 +361,6 @@
             this.lblMaxBet.TabIndex = 3;
             this.lblMaxBet.Text = "Max bet is $";
             this.lblMaxBet.Click += new System.EventHandler(this.Label5_Click);
-            // 
-            // lblbettingno
-            // 
-            this.lblbettingno.AutoSize = true;
-            this.lblbettingno.BackColor = System.Drawing.Color.Lime;
-            this.lblbettingno.Location = new System.Drawing.Point(123, 24);
-            this.lblbettingno.Name = "lblbettingno";
-            this.lblbettingno.Size = new System.Drawing.Size(34, 13);
-            this.lblbettingno.TabIndex = 14;
-            this.lblbettingno.Text = "none ";
             // 
             // label2
             // 
